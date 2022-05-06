@@ -1,6 +1,6 @@
 # iModif
 
-imodif is an image brightness modifier. This module is mainly meant to reduce or increase the brightness of images. It either brightens, darkens or dims images and uses libraries like numpy and opencv., hence ensure these packages are installed alongside imodif.
+imodif is an image brightness modifier. This module is mainly meant to reduce or increase the brightness of images. It either brightens, darkens or dims images and uses libraries like numpy and opencv., hence ensure these packages are installed alongside imodif. [Github](https://github.com/jellyCodee/iModif) documentation.
 
 
 ## Why?
@@ -60,7 +60,7 @@ dim.dim_to_folder(_parameters_)
 
 **NB**: Press 0 on your keyboard to close opened images.
 
-imod is really simple to use. There are basically just 6 methods you'll be calling.
+imodif is really simple to use. There are basically just 6 methods you'll be calling.
 First three is `dark`, `bright` and `dim`. These methods have the following parameters.
 
 `image`(required): The image you wish to brighten. This should be the absolute path to the image.
