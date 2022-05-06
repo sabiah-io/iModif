@@ -1,0 +1,12 @@
+LICENSE
+README.md
+setup.py
+imodif/__init__.py
+imodif/bright.py
+imodif/dark.py
+imodif/dim.py
+imodif.egg-info/PKG-INFO
+imodif.egg-info/SOURCES.txt
+imodif.egg-info/dependency_links.txt
+imodif.egg-info/requires.txt
+imodif.egg-info/top_level.txt
