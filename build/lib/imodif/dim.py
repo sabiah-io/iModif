@@ -56,7 +56,7 @@ def dim(image, degree=1, show=False, show_original=False):
 
 
 # dim all images and add to a newly created folder
-def dim_to_folder(images_path, file_extension, folder_name="modified", lowest_degree=1, highest_degree=5, add_original=False, randomize=False):
+def dim_to_folder(images_path, file_extension, folder_name="modified", lowest_degree=1, highest_degree=5, add_original=False, fperc=1, shuffle=False):
     """
     This function returns a folder containing all images modified.
 
@@ -72,7 +72,9 @@ def dim_to_folder(images_path, file_extension, folder_name="modified", lowest_de
 
     add_original: True to add original images to modified ones in the folder, False to not. Defaults to False.
 
-    randomize: True to mix up the modified and original images in the folder, False to not.
+    fperc: Percentage of images in the folder to modify. Range between 0 to 1.
+
+    shuffle: True to shuffle up the modified and original images in the folder, False to not.
     """
 
     # initialize empty lists
@@ -80,20 +82,24 @@ def dim_to_folder(images_path, file_extension, folder_name="modified", lowest_de
     dim_list = []
 
     # check for lowest and highest degree limits
-    if lowest_degree < 1 or lowest_degree > 10:
+    if lowest_degree < 1 or lowest_degree > 15:
         raise ValueError(
-            "lowest degree value must be within the range of 1 and 10")
-    elif highest_degree < 1 or highest_degree > 10:
+            "lowest degree must be within the range of 1 and 15 and an integer value")
+    if highest_degree < 1 or highest_degree > 15:
         raise ValueError(
-            "highest degree value must be within the range of 1 and 10")
-    else:
-        None
+            "highest degree must be within the range of 1 and 15 and an integer value")
+    if fperc < 0 or fperc > 1:
+        raise ValueError(
+            "fperc must be within the range of 0 and 1 and an integer or float value")
 
     # for every file in the image path provided having the extension provided
     # read the image and add to image_list
     for filename in glob.glob(images_path+"/*."+file_extension):
         img = cv.imread(filename)
         image_list.append(img)
+
+    random.sample(image_list, len(image_list))
+    image_list = image_list[:int(len(image_list)*fperc)]
 
     # loop through the image list and modify each one
     # append to the dim list when done
@@ -114,11 +120,9 @@ def dim_to_folder(images_path, file_extension, folder_name="modified", lowest_de
     # if add original, then add the dim list to the image list
     if add_original:
         image_list.extend(dim_list)
-        # if randomize, shuffle the image list
-        if randomize:
-            image_list = random.sample(image_list, len(image_list))
-        else:
-            None
+        # if shuffle, shuffle the image list
+        if shuffle:
+            random.sample(image_list, len(image_list))
 
         # for all images in the image list write to the required folder
         for i in range(len(image_list)):

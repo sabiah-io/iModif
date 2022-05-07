@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: imodif
-Version: 1.0.3
+Version: 1.0.4
 Summary: An image modification package.
 Home-page: UNKNOWN
 Author: Abiah Sylvester
@@ -109,7 +109,9 @@ The next `dark_to_folder`, `dim_to_folder` and `bright_to_folder` take the path 
 
 `add_original`: True to add original images to modified ones in the folder, False to not. Defaults to False.
 
-`randomize`: True to mix up the modified and original images in the folder, False to not. Defaults to False.
+`fperc`: Percentage of images in the folder to modify. Range between 0 to 1.
+
+`shuffle`: True to shuffle up the modified and original images in the folder, False to not. Defaults to False.
 
 
 The lowest and highest degree parameters are used to setup a range that applies random degrees of modifications to the images, hence all the images do not have the same degree of modification i.e., brightness, darkness or dimness. With this there is no need to manually apply dark, bright, dim filters to images one by one. You get to apply these filters to bulk images at the same time with varying degrees of contrast.

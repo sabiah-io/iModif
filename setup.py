@@ -6,7 +6,7 @@ HERE = pathlib.Path(__file__).parent
 
 README = (HERE / "README.md").read_text()
 
-VERSION = '1.0.3'
+VERSION = '1.0.4'
 DESCRIPTION = 'An image modification package.'
 
 # Setting up
